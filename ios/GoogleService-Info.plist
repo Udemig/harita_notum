@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyABVPgIK85a7jbuTyW5e4Fk2Ob-yabi0hs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>508458616377</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.haritanotum</string>
+	<key>PROJECT_ID</key>
+	<string>harita-notum-62336</string>
+	<key>STORAGE_BUCKET</key>
+	<string>harita-notum-62336.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:508458616377:ios:5cf34af0adabfed7cd6fe8</string>
+</dict>
+</plist>
