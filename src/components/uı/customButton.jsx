@@ -12,7 +12,7 @@ import {Colors} from '../../theme/colors';
 
 // create a component
 const CustomButton = props => {
-  const {loading, title} = props;
+  const {loading, title,style} = props;
   return (
       <TouchableOpacity
         disabled={loading}
@@ -20,6 +20,7 @@ const CustomButton = props => {
         style={[
           styles.container,
           loading ? styles.disableButton : styles.activeButton,
+          style
         ]}>
         {loading ? (
           <ActivityIndicator size={'small'} color={Colors.WHITE} />

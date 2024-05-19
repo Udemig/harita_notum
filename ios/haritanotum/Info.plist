@@ -33,6 +33,12 @@
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Lütfen konum için izin veriniz</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Lütfen galeri için izin veriniz</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Lütfen kamera için izin veriniz</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Lütfen mikrofon için izin veriniz</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Lütfen konum için izin veriniz</string>
 	<key>UILaunchStoryboardName</key>

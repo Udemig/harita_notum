@@ -1,25 +1,57 @@
 //import liraries
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView, Image} from 'react-native';
+import {View, Text, SafeAreaView, Image, ScrollView} from 'react-native';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import {screenStyle} from '../../styles/screenStyle';
 import {height, width} from '../../utils/constans';
 import CustomButton from '../../components/uı/customButton';
 import CustomInput from '../../components/uı/customInput';
-import {Key, User} from 'iconsax-react-native';
+import {Bag2, EmojiNormal, Key, Sms, User} from 'iconsax-react-native';
 import {Colors} from '../../theme/colors';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // create a component
 const SignUp = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('test3@gmail.com');
+  const [password, setPassword] = useState('1234asdf..');
+  const [name, setName] = useState('Mahmut');
+  const [surname, setSurname] = useState('Tuncer');
+  const [job, setJob] = useState('Halaycı');
   const [loading, setLoading] = useState(false);
-
+  const setUserUıd = async id => {
+    try {
+      await AsyncStorage.setItem('uid', id);
+    } catch (e) {
+      // saving error
+      console.log('save error', e);
+    }
+  };
+  const saveUser = userId => {
+    const form = {
+      userId: userId,
+      name: name,
+      surname: surname,
+      job: job,
+      email: email,
+    };
+    firestore()
+      .collection('Users')
+      .doc(userId)
+      .set(form)
+      .then(() => {
+        console.log('user added success');
+      })
+      .catch(eror => {
+        console.log(eror);
+      });
+  };
   const handleSignUp = () => {
     setLoading(true);
     auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(response => {
+        saveUser(response.user.uid);
+        setUserUıd(response.user.uid)
         console.log('User account created & signed in!');
       })
       .catch(error => {
@@ -39,17 +71,16 @@ const SignUp = ({navigation}) => {
   };
   return (
     <SafeAreaView style={screenStyle.safeAreView}>
-      <View style={screenStyle.container}>
-        <View style={{flex: 2}}>
-          <Image
-            source={require('../../assets/images/signIn.png')}
-            style={{
-              width: width,
-              height: height * 0.3,
-              resizeMode: 'contain',
-            }}
-          />
-        </View>
+      <ScrollView contentContainerStyle={{padding: 20}}>
+        <Image
+          source={require('../../assets/images/signIn.png')}
+          style={{
+            width: width,
+            height: height * 0.3,
+            resizeMode: 'contain',
+            marginBottom: 20,
+          }}
+        />
         <View
           style={{
             flex: 3,
@@ -61,12 +92,12 @@ const SignUp = ({navigation}) => {
               fontSize: 35,
               fontWeight: 'bold',
               textAlign: 'center',
-              marginBottom: 20,
+              marginVertical: 10,
             }}>
             Sign Up
           </Text>
           <CustomInput
-            icon={<User color={Colors.BLACK} variant="Bold" />}
+            icon={<Sms color={Colors.BLACK} variant="Bold" />}
             onChangeText={value => setEmail(value)}
             value={email}
             inputTitle="Email"
@@ -80,15 +111,36 @@ const SignUp = ({navigation}) => {
             inputTitle="Password"
             placeholder="Password"
           />
+          <CustomInput
+            icon={<User color={Colors.BLACK} variant="Bold" />}
+            onChangeText={value => setName(value)}
+            value={name}
+            inputTitle="Name"
+            placeholder="Name"
+          />
+          <CustomInput
+            icon={<User color={Colors.BLACK} variant="Bold" />}
+            onChangeText={value => setSurname(value)}
+            value={surname}
+            inputTitle="Surname"
+            placeholder="Surname"
+          />
+          <CustomInput
+            icon={<Bag2 color={Colors.BLACK} variant="Bold" />}
+            onChangeText={value => setJob(value)}
+            value={job}
+            inputTitle="Job"
+            placeholder="Job"
+          />
         </View>
-        <View style={{flex: 1, justifyContent: 'center'}}>
+        <View style={{marginVertical: 20, justifyContent: 'center'}}>
           <CustomButton
             loading={loading}
             onPress={() => handleSignUp()}
             title="Sign Up"
           />
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

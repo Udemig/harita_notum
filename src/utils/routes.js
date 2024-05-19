@@ -11,3 +11,4 @@ export const TAB = 'Tab';
 export const FAVORITES = 'Favorites';
 export const COORDINATESELECT = 'Coordinate Select';
 export const ADDLOCATION = 'Add Location';
+export const EDISUSER = 'Edit User';

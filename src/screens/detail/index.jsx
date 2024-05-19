@@ -1,13 +1,32 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, Alert} from 'react-native';
 import {screenStyle} from '../../styles/screenStyle';
 import {Colors} from '../../theme/colors';
-
+import CustomButton from '../../components/uı/customButton';
+import firestore from '@react-native-firebase/firestore';
 // create a component
 const Detail = ({route}) => {
+  const [loading, setLoading] = useState(false);
   const {item} = route.params;
-  console.log(item);
+
+  const addFavorite = () => {
+
+    setLoading(true);
+    firestore()
+      .collection('Favorites')
+      .add(item)
+      .then(() => {
+        Alert.alert('Location added favorite');
+      })
+      .catch(eror => {
+        console.log(eror);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <View style={screenStyle.container}>
       <View
@@ -69,6 +88,13 @@ const Detail = ({route}) => {
         }}>
         <Text style={{fontWeight:"bold"}}>Latitude:</Text>
         <Text>{item.coordinate.latitude}</Text>
+      </View>
+      <View style={{flex:1,justifyContent:"flex-end",marginVertical:25}}>
+      <CustomButton
+          loading={loading}
+          onPress={() => addFavorite()}
+          title="Add Favorite"
+        />
       </View>
     </View>
   );

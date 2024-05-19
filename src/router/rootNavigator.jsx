@@ -1,32 +1,28 @@
 import React, {useState, useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import auth from '@react-native-firebase/auth';
-import Home from '../screens/map';
 import {
   ADDNOTE,
   DETAIL,
   EDITNOTE,
-  HOME,
-  NOTES,
   SIGNIN,
   SIGNUP,
   LAUNCH,
   TAB,
   COORDINATESELECT,
   ADDLOCATION,
+  EDISUSER,
 } from '../utils/routes';
 import Detail from '../screens/detail';
-import Notes from '../screens/notes';
 import AddNote from '../screens/notes/addNote';
 import EditNote from '../screens/notes/editNote';
 import SignIn from '../screens/signIn';
 import SignUp from '../screens/signUp';
 import Launch from '../screens/launch';
-import {LogoutCurve} from 'iconsax-react-native';
-import {Colors} from '../theme/colors';
 import TabNavigator from './tabNavigator';
 import CoordinateSelect from '../screens/map/coordinateSelact';
 import AddLocation from '../screens/map/addLoacation';
+import ProfileUpdate from '../screens/profile/profileUpdate';
 const Stack = createNativeStackNavigator();
 
 function RootNavigator() {
@@ -43,11 +39,6 @@ function RootNavigator() {
   }, []);
   if (initializing) return null;
 
-  const signOut = () => {
-    auth()
-      .signOut()
-      .then(() => console.log('User signed out!'));
-  };
   return (
     <Stack.Navigator
       screenOptions={{
@@ -79,6 +70,7 @@ function RootNavigator() {
           <Stack.Screen name={DETAIL} component={Detail} />
           <Stack.Screen name={COORDINATESELECT} component={CoordinateSelect} />
           <Stack.Screen name={ADDLOCATION} component={AddLocation} />
+          <Stack.Screen name={EDISUSER} component={ProfileUpdate} />
         </Stack.Group>
       )}
     </Stack.Navigator>

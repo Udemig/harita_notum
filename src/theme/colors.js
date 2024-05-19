@@ -5,6 +5,7 @@ export const Colors = {
   RED: '#f47373',
   ORANGE: '#ff8a65',
   GRAY: '#808080',
+  SOFTGRAY:"#d3e3fd",
   COLOR1: '#e5f19a',
   COLOR2: '#be9dfe',
   COLOR3: '#e2b76f',
