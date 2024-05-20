@@ -9,7 +9,7 @@
 
 {
     [FIRApp configure];
-  [GMSServices provideAPIKey:@"AIzaSyAhiQ_QiwiUREk66SX5BKlGXHBrNBSxTx8"];
+  [GMSServices provideAPIKey:@"your_api_key"];
   self.moduleName = @"haritanotum";
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.

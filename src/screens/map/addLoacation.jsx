@@ -10,12 +10,10 @@ import CustomButton from '../../components/uı/customButton';
 
 // create a component
 const AddLocation = ({route}) => {
-  const [title, setTitle] = useState('Kültürpark Hastane');
-  const [description, setDescription] = useState(
-    'Bu hastanede kan ihtiyacı var.',
-  );
-  const [date, setDate] = useState('Mayıs 12,2024');
-  const [point, setPoint] = useState('5');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [date, setDate] = useState('');
+  const [point, setPoint] = useState('');
   const [loading, setLoading] = useState(false);
   const {coordinate} = route?.params;
 

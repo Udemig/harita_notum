@@ -12,11 +12,11 @@ import {Colors} from '../../theme/colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // create a component
 const SignUp = ({navigation}) => {
-  const [email, setEmail] = useState('test3@gmail.com');
-  const [password, setPassword] = useState('1234asdf..');
-  const [name, setName] = useState('Mahmut');
-  const [surname, setSurname] = useState('Tuncer');
-  const [job, setJob] = useState('Halaycı');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [job, setJob] = useState('');
   const [loading, setLoading] = useState(false);
   const setUserUıd = async id => {
     try {

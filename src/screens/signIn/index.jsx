@@ -12,8 +12,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // create a component
 const SignIn = ({navigation}) => {
-  const [email, setEmail] = useState('test@gmail.com');
-  const [password, setPassword] = useState('1234asdf..');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const setUserUıd = async id => {
     try {
